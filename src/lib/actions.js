@@ -16,11 +16,12 @@ async function checkAuth() {
 // NOTICES
 // ==========================================
 export async function getNotices() {
-  const { data, error } = await supabase
+  if (!supabaseAdmin) return [];
+  const { data, error } = await supabaseAdmin
     .from('notices')
     .select('*')
     .order('created_at', { ascending: false });
-  if (error) throw error;
+  if (error) return [];
   return data;
 }
 
@@ -44,12 +45,13 @@ export async function deleteNotice(id) {
 // TEACHERS
 // ==========================================
 export async function getTeachers() {
-  const { data, error } = await supabase
+  if (!supabaseAdmin) return [];
+  const { data, error } = await supabaseAdmin
     .from('teachers')
     .select('*')
     .order('display_order', { ascending: true })
     .order('created_at', { ascending: true });
-  if (error) throw error;
+  if (error) return [];
   return data;
 }
 
@@ -73,12 +75,13 @@ export async function deleteTeacher(id) {
 // CLASSES
 // ==========================================
 export async function getClasses() {
-  const { data, error } = await supabase
+  if (!supabaseAdmin) return [];
+  const { data, error } = await supabaseAdmin
     .from('classes')
     .select('*')
     .order('display_order', { ascending: true })
     .order('created_at', { ascending: true });
-  if (error) throw error;
+  if (error) return [];
   return data;
 }
 
@@ -102,11 +105,12 @@ export async function deleteClass(id) {
 // GALLERY
 // ==========================================
 export async function getGallery() {
-  const { data, error } = await supabase
+  if (!supabaseAdmin) return [];
+  const { data, error } = await supabaseAdmin
     .from('gallery')
     .select('*')
     .order('created_at', { ascending: false });
-  if (error) throw error;
+  if (error) return [];
   return data;
 }
 
@@ -130,11 +134,12 @@ export async function deleteGalleryItem(id) {
 // ALUMNI
 // ==========================================
 export async function getAlumni() {
-  const { data, error } = await supabase
+  if (!supabaseAdmin) return [];
+  const { data, error } = await supabaseAdmin
     .from('alumni')
     .select('*')
     .order('created_at', { ascending: false });
-  if (error) throw error;
+  if (error) return [];
   return data;
 }
 
@@ -158,12 +163,13 @@ export async function deleteAlumni(id) {
 // STATS
 // ==========================================
 export async function getStats() {
-  const { data, error } = await supabase
+  if (!supabaseAdmin) return null;
+  const { data, error } = await supabaseAdmin
     .from('stats')
     .select('*')
     .eq('id', 1)
     .single();
-  if (error && error.code !== 'PGRST116') throw error; // ignore no rows error
+  if (error) return null;
   return data;
 }
 
@@ -182,11 +188,12 @@ export async function updateStats(statsData) {
 // FEES
 // ==========================================
 export async function getFees() {
-  const { data, error } = await supabase
+  if (!supabaseAdmin) return [];
+  const { data, error } = await supabaseAdmin
     .from('fees')
     .select('*')
     .order('display_order', { ascending: true });
-  if (error) throw error;
+  if (error) return [];
   return data;
 }
 
@@ -199,7 +206,7 @@ export async function addFee(feeData) {
 }
 
 export async function deleteFee(id) {
-  checkAuth();
+  await checkAuth();
   const { error } = await supabaseAdmin.from('fees').delete().eq('id', id);
   if (error) throw error;
   revalidatePath('/');
