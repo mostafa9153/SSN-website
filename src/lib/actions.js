@@ -81,7 +81,28 @@ export async function getClasses() {
     .select('*')
     .order('display_order', { ascending: true })
     .order('created_at', { ascending: true });
+  
   if (error) return [];
+  
+  // Auto-seed if empty
+  if (data && data.length === 0) {
+    const defaultClasses = [
+      { name: 'Pre-Nursery', name_bn: 'প্রি-নার্সারি', display_order: 1 },
+      { name: 'Nursery', name_bn: 'নার্সারি', display_order: 2 },
+      { name: 'Class 1', name_bn: 'প্রথম শ্রেণী', display_order: 3 },
+      { name: 'Class 2', name_bn: 'দ্বিতীয় শ্রেণী', display_order: 4 },
+      { name: 'Class 3', name_bn: 'তৃতীয় শ্রেণী', display_order: 5 },
+      { name: 'Class 4', name_bn: 'চতুর্থ শ্রেণী', display_order: 6 }
+    ];
+    await supabaseAdmin.from('classes').insert(defaultClasses);
+    
+    const { data: newData } = await supabaseAdmin
+      .from('classes')
+      .select('*')
+      .order('display_order', { ascending: true });
+    return newData || [];
+  }
+  
   return data;
 }
 
