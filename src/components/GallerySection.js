@@ -4,12 +4,29 @@ import { GALLERY_DATA, GALLERY_CATEGORIES } from '@/lib/constants';
 
 export default function GallerySection({ galleryData }) {
   const [active, setActive] = useState('all');
-  const [lightboxSrc, setLightboxSrc] = useState(null);
+  const [lightboxIndex, setLightboxIndex] = useState(null);
+  const [visibleCount, setVisibleCount] = useState(6);
 
   // Use DB data if available, otherwise use demo data
   const displayGallery = galleryData && galleryData.length > 0 ? galleryData : GALLERY_DATA;
 
   const filtered = active === 'all' ? displayGallery : displayGallery.filter(g => g.category === active);
+  
+  // Reset visible count when category changes
+  const handleCategoryChange = (id) => {
+    setActive(id);
+    setVisibleCount(6);
+  };
+
+  const handleNext = (e) => {
+    e.stopPropagation();
+    setLightboxIndex((prev) => (prev === filtered.length - 1 ? 0 : prev + 1));
+  };
+
+  const handlePrev = (e) => {
+    e.stopPropagation();
+    setLightboxIndex((prev) => (prev === 0 ? filtered.length - 1 : prev - 1));
+  };
 
   return (
     <section className="section" id="gallery">
@@ -22,7 +39,7 @@ export default function GallerySection({ galleryData }) {
             <button
               key={cat.id}
               className={`gallery-tab${active === cat.id ? ' active' : ''}`}
-              onClick={() => setActive(cat.id)}
+              onClick={() => handleCategoryChange(cat.id)}
             >
               {cat.label}
             </button>
@@ -30,23 +47,50 @@ export default function GallerySection({ galleryData }) {
         </div>
 
         <div className="gallery-grid">
-          {filtered.map(item => (
+          {filtered.slice(0, visibleCount).map((item, index) => (
             <div
               className="gallery-item"
               key={item.id}
-              onClick={() => setLightboxSrc(item.image_url || item.src)}
+              onClick={() => setLightboxIndex(index)}
             >
-              <img src={item.image_url || item.src} alt={item.caption} loading="lazy" />
+              <img src={item.image_url || item.src} alt={item.caption || "গ্যালারি ছবি"} loading="lazy" />
             </div>
           ))}
         </div>
+
+        {filtered.length > visibleCount && (
+          <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+            <button 
+              className="btn" 
+              onClick={() => setVisibleCount(prev => prev + 6)}
+              style={{ background: 'var(--primary)', color: 'white', padding: '0.75rem 2rem', borderRadius: '50px' }}
+            >
+              আরও দেখুন (See More) ↓
+            </button>
+          </div>
+        )}
       </div>
 
-      {/* Lightbox */}
-      {lightboxSrc && (
-        <div className="lightbox open" onClick={() => setLightboxSrc(null)}>
-          <button className="lightbox-close" aria-label="বন্ধ করুন">✕</button>
-          <img src={lightboxSrc} alt="গ্যালারি ছবি" />
+      {/* Lightbox Slideshow */}
+      {lightboxIndex !== null && (
+        <div className="lightbox open" onClick={() => setLightboxIndex(null)}>
+          <button className="lightbox-close" aria-label="বন্ধ করুন" onClick={() => setLightboxIndex(null)}>✕</button>
+          
+          <button className="lightbox-btn prev" onClick={handlePrev} aria-label="Previous">❮</button>
+          
+          <img 
+            src={filtered[lightboxIndex].image_url || filtered[lightboxIndex].src} 
+            alt={filtered[lightboxIndex].caption || "গ্যালারি ছবি"} 
+            onClick={(e) => e.stopPropagation()}
+          />
+          
+          {filtered[lightboxIndex].caption && (
+            <div className="lightbox-caption" onClick={(e) => e.stopPropagation()}>
+              {filtered[lightboxIndex].caption}
+            </div>
+          )}
+
+          <button className="lightbox-btn next" onClick={handleNext} aria-label="Next">❯</button>
         </div>
       )}
     </section>
