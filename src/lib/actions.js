@@ -17,6 +17,20 @@ async function checkAuth() {
 // ==========================================
 export async function getNotices() {
   if (!supabaseAdmin) return [];
+
+  // Auto-cleanup: Delete notices older than 30 days
+  const thirtyDaysAgo = new Date();
+  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+  
+  try {
+    await supabaseAdmin
+      .from('notices')
+      .delete()
+      .lt('created_at', thirtyDaysAgo.toISOString());
+  } catch (e) {
+    console.error('Cleanup error:', e);
+  }
+
   const { data, error } = await supabaseAdmin
     .from('notices')
     .select('*')
