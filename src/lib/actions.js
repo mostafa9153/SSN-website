@@ -101,6 +101,17 @@ export async function deleteClass(id) {
   revalidatePath('/admin/classes');
 }
 
+export async function updateClass(id, classData) {
+  await checkAuth();
+  const { error } = await supabaseAdmin
+    .from('classes')
+    .update(classData)
+    .eq('id', id);
+  if (error) throw error;
+  revalidatePath('/');
+  revalidatePath('/admin/classes');
+}
+
 // ==========================================
 // GALLERY
 // ==========================================
