@@ -14,7 +14,7 @@ export default function NoticesClient({ initialData }) {
     if (!title) return;
     setLoading(true);
     try {
-      await addNotice({ title, text: title, is_active: true, file_url: fileUrl });
+      await addNotice({ title: title, is_active: true, file_url: fileUrl });
       window.location.reload();
     } catch (error) {
       alert('Error adding notice');
