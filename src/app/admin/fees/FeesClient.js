@@ -127,7 +127,7 @@ export default function FeesClient({ initialData }) {
                     onClick={() => handleEditClick(fee)} 
                     style={{ padding: '0.4rem 1rem', background: 'rgba(86, 171, 47, 0.1)', color: '#56ab2f', border: '1px solid #56ab2f', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}
                   >
-                    আপডেট
+                    Edit
                   </button>
                 </td>
               </tr>

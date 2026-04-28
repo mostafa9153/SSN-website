@@ -80,7 +80,7 @@ export default function ClassesClient({ initialData }) {
               onClick={() => handleEditClick(cls)}
               style={{ width: '100%', padding: '0.6rem', background: 'rgba(86, 171, 47, 0.1)', color: '#56ab2f', border: '1px solid #56ab2f', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold' }}
             >
-              ফাইল আপডেট করুন
+              Edit Files
             </button>
           </div>
         ))}

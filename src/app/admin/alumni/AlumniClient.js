@@ -83,7 +83,7 @@ export default function AlumniClient({ initialData }) {
                 <td style={{ padding: '1rem', fontWeight: 'bold' }}>{item.name}</td>
                 <td style={{ padding: '1rem', color: '#666' }}>{item.achievement}<br/><small>{item.year}</small></td>
                 <td style={{ padding: '1rem', textAlign: 'right' }}>
-                  <button onClick={() => handleDelete(item.id)} style={{ padding: '0.4rem 0.8rem', background: '#ffe3e3', color: '#fa5252', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>মুছুন</button>
+                  <button onClick={() => handleDelete(item.id)} style={{ padding: '0.4rem 0.8rem', background: '#ffe3e3', color: '#fa5252', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Delete</button>
                 </td>
               </tr>
             ))}

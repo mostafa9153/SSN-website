@@ -87,7 +87,7 @@ export default function NoticesClient({ initialData }) {
                     onClick={() => handleDelete(notice.id)}
                     style={{ padding: '0.4rem 0.8rem', background: '#ffe3e3', color: '#fa5252', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
                   >
-                    মুছুন
+                    Delete
                   </button>
                 </td>
               </tr>
