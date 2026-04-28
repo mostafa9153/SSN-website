@@ -51,6 +51,23 @@ export default function AdminLayout({ children }) {
         </div>
         
         <nav style={{ flex: 1, padding: '1rem 0', overflowY: 'auto' }}>
+          <Link 
+            href="/" 
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.75rem',
+              padding: '0.75rem 1.5rem',
+              color: '#495057',
+              textDecoration: 'none',
+              fontSize: '0.9rem',
+              fontWeight: '500',
+              borderBottom: '1px solid #f1f3f5',
+              marginBottom: '0.5rem'
+            }}
+          >
+            <span>🌐</span> View Website
+          </Link>
           {navItems.map((item) => (
             <Link 
               key={item.path} 
