@@ -8,6 +8,10 @@ export async function POST(request) {
     const { password } = await request.json();
     const adminPassword = process.env.ADMIN_PASSWORD;
 
+    if (!adminPassword) {
+      return NextResponse.json({ success: false, error: 'Server configuration error: ADMIN_PASSWORD not set' }, { status: 500 });
+    }
+
     if (password === adminPassword) {
       const cookieStore = await cookies();
       cookieStore.set({
