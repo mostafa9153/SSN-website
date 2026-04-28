@@ -85,6 +85,17 @@ export async function deleteTeacher(id) {
   revalidatePath('/admin/teachers');
 }
 
+export async function updateTeacher(id, teacherData) {
+  await checkAuth();
+  const { error } = await supabaseAdmin
+    .from('teachers')
+    .update(teacherData)
+    .eq('id', id);
+  if (error) throw error;
+  revalidatePath('/');
+  revalidatePath('/admin/teachers');
+}
+
 // ==========================================
 // CLASSES
 // ==========================================
