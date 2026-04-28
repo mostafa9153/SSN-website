@@ -31,6 +31,13 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
+            <a 
+              href="/admin" 
+              onClick={handleLinkClick} 
+              className="admin-nav-btn"
+            >
+              ⚙️ Admin Panel
+            </a>
           </div>
           <div 
             className={`hamburger${menuOpen ? ' active' : ''}`} 
