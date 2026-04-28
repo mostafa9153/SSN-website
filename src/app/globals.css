@@ -376,9 +376,29 @@ p { font-size: 1rem; }
 /* --- Stats --- */
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
   margin-top: 1rem;
+}
+
+@media (max-width: 600px) {
+  .stats-grid {
+    gap: 0.5rem;
+  }
+  .stat-card {
+    padding: 1rem 0.5rem;
+  }
+  .stat-number {
+    font-size: 1.5rem;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+  }
+  .stat-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
 }
 
 .stat-card {
