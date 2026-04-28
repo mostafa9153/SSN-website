@@ -60,7 +60,7 @@ export default function FeesClient({ initialData }) {
                 />
               </div>
               <div>
-                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: '#495057' }}>Admission Fee (৳)</label>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: '#495057' }}>Admission Fee (₹)</label>
                 <input 
                   type="number" 
                   value={formData.admission_fee} 
@@ -70,7 +70,7 @@ export default function FeesClient({ initialData }) {
                 />
               </div>
               <div>
-                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: '#495057' }}>Monthly Fee (৳)</label>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: '#495057' }}>Monthly Fee (₹)</label>
                 <input 
                   type="number" 
                   value={formData.monthly_fee} 
@@ -80,7 +80,7 @@ export default function FeesClient({ initialData }) {
                 />
               </div>
               <div>
-                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: '#495057' }}>Annual Fee (৳)</label>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: '#495057' }}>Annual Fee (₹)</label>
                 <input 
                   type="number" 
                   value={formData.annual_fee} 
@@ -120,9 +120,9 @@ export default function FeesClient({ initialData }) {
               <tr key={fee.id} style={{ borderBottom: '1px solid #e9ecef' }}>
                 <td style={{ padding: '1rem', fontWeight: 'bold' }}>{fee.class_name}</td>
                 <td style={{ padding: '1rem' }}>{fee.age_requirement || '-'}</td>
-                <td style={{ padding: '1rem', color: '#56ab2f', fontWeight: 'bold' }}>{fee.admission_fee ? `৳ ${fee.admission_fee}` : '-'}</td>
-                <td style={{ padding: '1rem', color: '#56ab2f', fontWeight: 'bold' }}>{fee.monthly_fee ? `৳ ${fee.monthly_fee}` : '-'}</td>
-                <td style={{ padding: '1rem', color: '#56ab2f', fontWeight: 'bold' }}>{fee.annual_fee ? `৳ ${fee.annual_fee}` : '-'}</td>
+                <td style={{ padding: '1rem', color: '#56ab2f', fontWeight: 'bold' }}>{fee.admission_fee ? `₹ ${fee.admission_fee}` : '-'}</td>
+                <td style={{ padding: '1rem', color: '#56ab2f', fontWeight: 'bold' }}>{fee.monthly_fee ? `₹ ${fee.monthly_fee}` : '-'}</td>
+                <td style={{ padding: '1rem', color: '#56ab2f', fontWeight: 'bold' }}>{fee.annual_fee ? `₹ ${fee.annual_fee}` : '-'}</td>
                 <td style={{ padding: '1rem', textAlign: 'right' }}>
                   <button 
                     onClick={() => handleEditClick(fee)} 

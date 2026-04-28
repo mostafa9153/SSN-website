@@ -27,9 +27,9 @@ export default function AdmissionSection({ feesData }) {
                 <tr key={i}>
                   <td style={{ fontWeight: 600 }}>{fee.class_name || fee.class}</td>
                   <td>{fee.age_requirement || fee.age}</td>
-                  <td>৳{fee.admission_fee || fee.admission}</td>
-                  <td>৳{fee.monthly_fee || fee.monthly}</td>
-                  <td>৳{fee.annual_fee || fee.annual}</td>
+                  <td>₹{fee.admission_fee || fee.admission}</td>
+                  <td>₹{fee.monthly_fee || fee.monthly}</td>
+                  <td>₹{fee.annual_fee || fee.annual}</td>
                 </tr>
               ))}
             </tbody>
