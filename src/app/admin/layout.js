@@ -1,9 +1,11 @@
 'use client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useState } from 'react';
 
 export default function AdminLayout({ children }) {
   const pathname = usePathname();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   
   // Do not show sidebar on the login page
   if (pathname === '/admin/login') {
@@ -27,18 +29,33 @@ export default function AdminLayout({ children }) {
   };
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh', background: '#f8f9fa', fontFamily: "Inter, sans-serif" }}>
+    <div className="admin-layout">
+      {/* Sidebar Overlay for Mobile */}
+      <div 
+        className={`admin-overlay ${sidebarOpen ? 'open' : ''}`}
+        onClick={() => setSidebarOpen(false)}
+      ></div>
+
       {/* Sidebar */}
-      <aside style={{ width: '250px', background: '#ffffff', borderRight: '1px solid #e9ecef', display: 'flex', flexDirection: 'column' }}>
-        <div style={{ padding: '1.5rem', borderBottom: '1px solid #e9ecef' }}>
+      <aside className={`admin-sidebar ${sidebarOpen ? 'open' : ''}`}>
+        <div style={{ padding: '1.5rem', borderBottom: '1px solid #e9ecef', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <h2 style={{ fontSize: '1.2rem', color: '#56ab2f', margin: 0 }}>🏫 Admin Panel</h2>
+          {/* Close button for mobile inside sidebar */}
+          <button 
+            className="admin-hamburger" 
+            style={{ display: sidebarOpen ? 'flex' : 'none', margin: 0, padding: '0.2rem 0.5rem' }} 
+            onClick={() => setSidebarOpen(false)}
+          >
+            ✕
+          </button>
         </div>
         
-        <nav style={{ flex: 1, padding: '1rem 0' }}>
+        <nav style={{ flex: 1, padding: '1rem 0', overflowY: 'auto' }}>
           {navItems.map((item) => (
             <Link 
               key={item.path} 
               href={item.path}
+              onClick={() => setSidebarOpen(false)}
               style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -68,7 +85,15 @@ export default function AdminLayout({ children }) {
       </aside>
 
       {/* Main Content */}
-      <main style={{ flex: 1, padding: '2rem', overflowY: 'auto' }}>
+      <main className="admin-main">
+        {/* Mobile Hamburger Button */}
+        <button 
+          className="admin-hamburger" 
+          onClick={() => setSidebarOpen(true)}
+        >
+          <span>☰</span> Menu
+        </button>
+
         <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
           {children}
         </div>
