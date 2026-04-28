@@ -740,6 +740,11 @@ p { font-size: 1rem; }
 .step-card {
   padding: 1.5rem;
   text-align: center;
+  background: white;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05); /* Added negative Y shadow to cast shadow on card above/below */
+  position: relative;
 }
 
 .step-number {
