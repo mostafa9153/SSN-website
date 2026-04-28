@@ -12,7 +12,7 @@ export default function GalleryClient({ initialData }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.image_url) {
-      alert('দয়া করে একটি ছবি আপলোড করুন');
+      alert('Please upload a photo first');
       return;
     }
     setLoading(true);
@@ -26,7 +26,7 @@ export default function GalleryClient({ initialData }) {
   };
 
   const handleDelete = async (id) => {
-    if (!confirm('আপনি কি নিশ্চিত?')) return;
+    if (!confirm('Are you sure you want to delete this photo?')) return;
     try {
       await deleteGalleryItem(id);
       setGallery(gallery.filter(item => item.id !== id));
@@ -37,19 +37,21 @@ export default function GalleryClient({ initialData }) {
 
   return (
     <div>
+      <h1 style={{ marginBottom: '1.5rem', color: '#2d3436' }}>Manage Gallery</h1>
+
       {/* Add Form */}
       <div style={{ background: 'white', padding: '1.5rem', borderRadius: '8px', border: '1px solid #e9ecef', marginBottom: '2rem' }}>
-        <h3 style={{ marginBottom: '1rem' }}>নতুন ছবি যোগ করুন</h3>
+        <h3 style={{ marginBottom: '1rem' }}>Add New Photo</h3>
         
         <div style={{ marginBottom: '1rem' }}>
           <FileUpload 
             bucket="photos" 
             accept="image/*" 
-            label="ছবি আপলোড করুন (বাধ্যতামূলক)" 
+            label="Upload photo (Required)" 
             onUploadSuccess={(url) => setFormData({...formData, image_url: url})} 
           />
           {formData.image_url && (
-            <div style={{ marginTop: '0.5rem', color: '#56ab2f', fontSize: '0.9rem' }}>✓ ছবি আপলোড সফল হয়েছে</div>
+            <div style={{ marginTop: '0.5rem', color: '#56ab2f', fontSize: '0.9rem' }}>✓ Photo uploaded successfully</div>
           )}
         </div>
 
@@ -60,10 +62,10 @@ export default function GalleryClient({ initialData }) {
             ))}
           </select>
           
-          <input type="text" placeholder="ক্যাপশন (ঐচ্ছিক)" value={formData.caption} onChange={e => setFormData({...formData, caption: e.target.value})} style={{ padding: '0.75rem', borderRadius: '4px', border: '1px solid #ced4da' }} />
+          <input type="text" placeholder="Caption (Optional)" value={formData.caption} onChange={e => setFormData({...formData, caption: e.target.value})} style={{ padding: '0.75rem', borderRadius: '4px', border: '1px solid #ced4da' }} />
           
           <button type="submit" disabled={loading} style={{ gridColumn: '1 / -1', padding: '0.75rem', background: '#56ab2f', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>
-            {loading ? 'যোগ হচ্ছে...' : 'যোগ করুন'}
+            {loading ? 'Adding...' : 'Add Photo'}
           </button>
         </form>
       </div>
@@ -81,13 +83,14 @@ export default function GalleryClient({ initialData }) {
             </div>
             <button 
               onClick={() => handleDelete(item.id)} 
+              title="Delete Photo"
               style={{ position: 'absolute', top: '0.5rem', right: '0.5rem', background: 'rgba(250, 82, 82, 0.9)', color: 'white', border: 'none', borderRadius: '50%', width: '30px', height: '30px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
             >✕</button>
           </div>
         ))}
         {gallery.length === 0 && (
           <div style={{ gridColumn: '1 / -1', padding: '3rem', textAlign: 'center', color: '#868e96', background: 'white', borderRadius: '8px', border: '1px solid #e9ecef' }}>
-            কোনো ছবি নেই
+            No photos found in gallery.
           </div>
         )}
       </div>

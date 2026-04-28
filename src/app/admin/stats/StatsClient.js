@@ -9,15 +9,18 @@ export default function StatsClient({ initialData }) {
     founding_year: initialData?.founding_year || 2011
   });
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setMessage('');
     try {
       await updateStats(formData);
-      alert('সফলভাবে আপডেট করা হয়েছে!');
+      setMessage('Statistics updated successfully! ✓');
+      setTimeout(() => setMessage(''), 3000);
     } catch (error) {
-      alert('Error updating stats');
+      alert('Error updating statistics');
     } finally {
       setLoading(false);
     }
@@ -25,46 +28,54 @@ export default function StatsClient({ initialData }) {
 
   return (
     <div>
-      <div style={{ background: 'white', padding: '1.5rem', borderRadius: '8px', border: '1px solid #e9ecef', maxWidth: '500px' }}>
-        <p style={{ color: '#868e96', marginBottom: '1.5rem' }}>হোম পেজে প্রদর্শিত ওয়েবসাইটের মূল তথ্যগুলো এখান থেকে পরিবর্তন করতে পারবেন।</p>
-        
-        <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '1.25rem' }}>
-          <div>
-            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: '#495057' }}>মোট শিক্ষক-শিক্ষিকা</label>
+      <h1 style={{ marginBottom: '1.5rem', color: '#2d3436' }}>Site Statistics</h1>
+      <p style={{ color: '#666', marginBottom: '2rem' }}>Update the numbers shown in the landing page stats cards.</p>
+
+      <div style={{ background: 'white', padding: '2rem', borderRadius: '12px', border: '1px solid #e9ecef', maxWidth: '600px', boxShadow: '0 4px 15px rgba(0,0,0,0.05)' }}>
+        <form onSubmit={handleSubmit}>
+          <div style={{ marginBottom: '1.5rem' }}>
+            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: '#495057' }}>Total Teachers</label>
             <input 
               type="number" 
-              required 
               value={formData.teacher_count} 
-              onChange={e => setFormData({...formData, teacher_count: parseInt(e.target.value) || 0})} 
-              style={{ width: '100%', padding: '0.75rem', borderRadius: '4px', border: '1px solid #ced4da' }} 
+              onChange={e => setFormData({...formData, teacher_count: parseInt(e.target.value)})} 
+              style={{ width: '100%', padding: '0.75rem', borderRadius: '6px', border: '1px solid #ced4da' }} 
             />
           </div>
-          
-          <div>
-            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: '#495057' }}>মোট শিক্ষার্থী</label>
+
+          <div style={{ marginBottom: '1.5rem' }}>
+            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: '#495057' }}>Total Students</label>
             <input 
               type="number" 
-              required 
               value={formData.student_count} 
-              onChange={e => setFormData({...formData, student_count: parseInt(e.target.value) || 0})} 
-              style={{ width: '100%', padding: '0.75rem', borderRadius: '4px', border: '1px solid #ced4da' }} 
+              onChange={e => setFormData({...formData, student_count: parseInt(e.target.value)})} 
+              style={{ width: '100%', padding: '0.75rem', borderRadius: '6px', border: '1px solid #ced4da' }} 
             />
           </div>
-          
-          <div>
-            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: '#495057' }}>প্রতিষ্ঠা সাল (e.g. 2011)</label>
+
+          <div style={{ marginBottom: '2rem' }}>
+            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: '#495057' }}>Founding Year</label>
             <input 
               type="number" 
-              required 
               value={formData.founding_year} 
-              onChange={e => setFormData({...formData, founding_year: parseInt(e.target.value) || 2011})} 
-              style={{ width: '100%', padding: '0.75rem', borderRadius: '4px', border: '1px solid #ced4da' }} 
+              onChange={e => setFormData({...formData, founding_year: parseInt(e.target.value)})} 
+              style={{ width: '100%', padding: '0.75rem', borderRadius: '6px', border: '1px solid #ced4da' }} 
             />
           </div>
-          
-          <button type="submit" disabled={loading} style={{ width: '100%', padding: '0.75rem', background: '#56ab2f', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', marginTop: '0.5rem' }}>
-            {loading ? 'আপডেট হচ্ছে...' : 'পরিবর্তন সেভ করুন'}
+
+          <button 
+            type="submit" 
+            disabled={loading} 
+            style={{ width: '100%', padding: '1rem', background: '#56ab2f', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold', fontSize: '1rem' }}
+          >
+            {loading ? 'Updating...' : 'Update Statistics'}
           </button>
+
+          {message && (
+            <div style={{ marginTop: '1rem', textAlign: 'center', color: '#56ab2f', fontWeight: 'bold' }}>
+              {message}
+            </div>
+          )}
         </form>
       </div>
     </div>

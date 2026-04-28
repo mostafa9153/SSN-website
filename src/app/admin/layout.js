@@ -11,14 +11,14 @@ export default function AdminLayout({ children }) {
   }
 
   const navItems = [
-    { name: 'ড্যাশবোর্ড', path: '/admin', icon: '📊' },
-    { name: 'নোটিশ', path: '/admin/notices', icon: '📢' },
-    { name: 'শিক্ষক', path: '/admin/teachers', icon: '👨‍🏫' },
-    { name: 'ক্লাস ও রুটিন', path: '/admin/classes', icon: '📖' },
-    { name: 'ভর্তি ও ফি', path: '/admin/fees', icon: '📝' },
-    { name: 'গ্যালারি', path: '/admin/gallery', icon: '📸' },
-    { name: 'প্রাক্তন ছাত্র', path: '/admin/alumni', icon: '🎓' },
-    { name: 'স্ট্যাটস', path: '/admin/stats', icon: '📈' },
+    { name: 'Dashboard', path: '/admin', icon: '📊' },
+    { name: 'Notices', path: '/admin/notices', icon: '📢' },
+    { name: 'Teachers', path: '/admin/teachers', icon: '👨‍🏫' },
+    { name: 'Classes & Routine', path: '/admin/classes', icon: '📖' },
+    { name: 'Admission & Fees', path: '/admin/fees', icon: '📝' },
+    { name: 'Gallery', path: '/admin/gallery', icon: '📸' },
+    { name: 'Alumni', path: '/admin/alumni', icon: '🎓' },
+    { name: 'Site Stats', path: '/admin/stats', icon: '📈' },
   ];
 
   const handleLogout = async () => {
@@ -27,11 +27,11 @@ export default function AdminLayout({ children }) {
   };
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh', background: '#f8f9fa', fontFamily: "'Hind Siliguri', sans-serif" }}>
+    <div style={{ display: 'flex', minHeight: '100vh', background: '#f8f9fa', fontFamily: "Inter, sans-serif" }}>
       {/* Sidebar */}
       <aside style={{ width: '250px', background: '#ffffff', borderRight: '1px solid #e9ecef', display: 'flex', flexDirection: 'column' }}>
         <div style={{ padding: '1.5rem', borderBottom: '1px solid #e9ecef' }}>
-          <h2 style={{ fontSize: '1.2rem', color: '#56ab2f', margin: 0 }}>🏫 অ্যাডমিন প্যানেল</h2>
+          <h2 style={{ fontSize: '1.2rem', color: '#56ab2f', margin: 0 }}>🏫 Admin Panel</h2>
         </div>
         
         <nav style={{ flex: 1, padding: '1rem 0' }}>
@@ -62,7 +62,7 @@ export default function AdminLayout({ children }) {
             onClick={handleLogout}
             style={{ width: '100%', padding: '0.5rem', background: '#ffe3e3', color: '#e03131', border: 'none', borderRadius: '4px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}
           >
-            <span>🚪</span> লগআউট
+            <span>🚪</span> Logout
           </button>
         </div>
       </aside>

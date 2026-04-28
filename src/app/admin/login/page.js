@@ -26,10 +26,10 @@ export default function AdminLogin() {
       if (res.ok && data.success) {
         window.location.href = '/admin'; // Force full reload to update middleware
       } else {
-        setError(data.error || 'Login failed');
+        setError(data.error || 'Login failed. Please check your password.');
       }
     } catch (err) {
-      setError('Something went wrong');
+      setError('Something went wrong. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -39,14 +39,14 @@ export default function AdminLogin() {
     <div style={{ display: 'flex', height: '100vh', alignItems: 'center', justifyContent: 'center', background: '#F5F0E8', padding: '1rem' }}>
       <div style={{ background: 'white', padding: '2.5rem', borderRadius: '16px', boxShadow: '0 8px 30px rgba(0,0,0,0.1)', width: '100%', maxWidth: '400px', textAlign: 'center' }}>
         <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🏫</div>
-        <h1 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: '#56ab2f' }}>অ্যাডমিন প্যানেল</h1>
-        <p style={{ color: '#666', marginBottom: '2rem' }}>লগইন করতে পাসওয়ার্ড দিন</p>
+        <h1 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: '#56ab2f' }}>Admin Panel</h1>
+        <p style={{ color: '#666', marginBottom: '2rem' }}>Please enter your password to login</p>
         
         <form onSubmit={handleLogin}>
           <div style={{ position: 'relative', marginBottom: '1rem' }}>
             <input
               type={showPassword ? "text" : "password"}
-              placeholder="পাসওয়ার্ড"
+              placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               style={{ width: '100%', padding: '0.8rem', paddingRight: '2.5rem', borderRadius: '8px', border: '1px solid #ddd', fontSize: '1rem' }}
@@ -66,7 +66,7 @@ export default function AdminLogin() {
             disabled={loading}
             style={{ width: '100%', padding: '0.8rem', borderRadius: '8px', background: '#56ab2f', color: 'white', border: 'none', fontSize: '1rem', fontWeight: 'bold', cursor: loading ? 'not-allowed' : 'pointer' }}
           >
-            {loading ? 'লগইন হচ্ছে...' : 'লগইন'}
+            {loading ? 'Logging in...' : 'Login'}
           </button>
         </form>
       </div>

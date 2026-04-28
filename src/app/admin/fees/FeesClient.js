@@ -38,28 +38,29 @@ export default function FeesClient({ initialData }) {
 
   return (
     <div>
-      <p style={{ color: '#666', marginBottom: '2rem' }}>নিচের ক্লাসগুলোর ভর্তি তথ্য ও ফি আপডেট করুন।</p>
+      <h1 style={{ marginBottom: '1.5rem', color: '#2d3436' }}>Admission & Fees</h1>
+      <p style={{ color: '#666', marginBottom: '2rem' }}>Update admission and monthly fee information for each class.</p>
 
       {editingId && (
         <div style={{ background: 'white', padding: '1.5rem', borderRadius: '12px', border: '2px solid #56ab2f', marginBottom: '2rem', boxShadow: '0 4px 15px rgba(0,0,0,0.05)' }}>
           <h3 style={{ marginBottom: '1.5rem', color: '#2b8a3e' }}>
-            {fees.find(f => f.id === editingId)?.class_name} - এর ফি আপডেট করুন
+            Update Fees for {fees.find(f => f.id === editingId)?.class_name}
           </h3>
           
           <form onSubmit={handleUpdate}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
               <div>
-                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: '#495057' }}>বয়সসীমা</label>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: '#495057' }}>Age Limit</label>
                 <input 
                   type="text" 
                   value={formData.age_requirement} 
                   onChange={e => setFormData({...formData, age_requirement: e.target.value})} 
-                  placeholder="e.g. 3-4 বছর"
+                  placeholder="e.g. 3-4 Years"
                   style={{ width: '100%', padding: '0.75rem', borderRadius: '6px', border: '1px solid #ced4da' }} 
                 />
               </div>
               <div>
-                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: '#495057' }}>ভর্তি ফি (৳)</label>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: '#495057' }}>Admission Fee (৳)</label>
                 <input 
                   type="number" 
                   value={formData.admission_fee} 
@@ -69,7 +70,7 @@ export default function FeesClient({ initialData }) {
                 />
               </div>
               <div>
-                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: '#495057' }}>মাসিক ফি (৳)</label>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: '#495057' }}>Monthly Fee (৳)</label>
                 <input 
                   type="number" 
                   value={formData.monthly_fee} 
@@ -79,7 +80,7 @@ export default function FeesClient({ initialData }) {
                 />
               </div>
               <div>
-                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: '#495057' }}>বার্ষিক ফি (৳)</label>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: '#495057' }}>Annual Fee (৳)</label>
                 <input 
                   type="number" 
                   value={formData.annual_fee} 
@@ -92,10 +93,10 @@ export default function FeesClient({ initialData }) {
 
             <div style={{ display: 'flex', gap: '1rem' }}>
               <button type="submit" disabled={loading} style={{ padding: '0.75rem 2rem', background: '#56ab2f', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold' }}>
-                {loading ? 'আপডেট হচ্ছে...' : 'পরিবর্তন সেভ করুন'}
+                {loading ? 'Updating...' : 'Save Changes'}
               </button>
               <button type="button" onClick={() => setEditingId(null)} style={{ padding: '0.75rem 2rem', background: '#f1f3f5', color: '#495057', border: 'none', borderRadius: '6px', cursor: 'pointer' }}>
-                বাতিল
+                Cancel
               </button>
             </div>
           </form>
@@ -106,12 +107,12 @@ export default function FeesClient({ initialData }) {
         <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
           <thead>
             <tr style={{ background: '#f8f9fa', borderBottom: '2px solid #e9ecef' }}>
-              <th style={{ padding: '1rem' }}>শ্রেণী</th>
-              <th style={{ padding: '1rem' }}>বয়সসীমা</th>
-              <th style={{ padding: '1rem' }}>ভর্তি ফি</th>
-              <th style={{ padding: '1rem' }}>মাসিক ফি</th>
-              <th style={{ padding: '1rem' }}>বার্ষিক ফি</th>
-              <th style={{ padding: '1rem', textAlign: 'right' }}>অ্যাকশন</th>
+              <th style={{ padding: '1rem' }}>Class</th>
+              <th style={{ padding: '1rem' }}>Age Limit</th>
+              <th style={{ padding: '1rem' }}>Admission Fee</th>
+              <th style={{ padding: '1rem' }}>Monthly Fee</th>
+              <th style={{ padding: '1rem' }}>Annual Fee</th>
+              <th style={{ padding: '1rem', textAlign: 'right' }}>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -133,7 +134,7 @@ export default function FeesClient({ initialData }) {
               </tr>
             ))}
             {fees.length === 0 && (
-              <tr><td colSpan="6" style={{ padding: '2rem', textAlign: 'center', color: '#868e96' }}>কোনো তথ্য নেই</td></tr>
+              <tr><td colSpan="6" style={{ padding: '2rem', textAlign: 'center', color: '#868e96' }}>No data found.</td></tr>
             )}
           </tbody>
         </table>
