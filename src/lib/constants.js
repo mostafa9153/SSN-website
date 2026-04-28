@@ -3,7 +3,7 @@ export const SCHOOL = {
   name: 'সিরাজিয়া শিশু নিকেতন',
   nameEn: 'Sirajia Shishu Niketan',
   address: 'P9QV+G3V, Guyadaha, West Bengal 721253',
-  addressBn: 'গুয়াদাহা, পশ্চিমবঙ্গ ৭২১২৫৩',
+  addressBn: 'গুয়াদাহা, পশ্চিমবঙ্গ 721253',
   phone: '7318778321',
   whatsapp: '917318778321',
   udise: '19200505206',
@@ -39,28 +39,28 @@ export const CLASSES_LIST = [
 
 // Demo fees data
 export const FEES_DATA = [
-  { class: 'Pre-Nursery', age: '৩-৪ বছর', admission: '৫০০', monthly: '২০০', annual: '২,৫০০' },
-  { class: 'Nursery', age: '৪-৫ বছর', admission: '৫০০', monthly: '২৫০', annual: '৩,০০০' },
-  { class: 'Class 1', age: '৫-৬ বছর', admission: '৬০০', monthly: '৩০০', annual: '৩,৬০০' },
-  { class: 'Class 2', age: '৬-৭ বছর', admission: '৬০০', monthly: '৩০০', annual: '৩,৬০০' },
-  { class: 'Class 3', age: '৭-৮ বছর', admission: '৭০০', monthly: '৩৫০', annual: '৪,২০০' },
-  { class: 'Class 4', age: '৮-৯ বছর', admission: '৭০০', monthly: '৩৫০', annual: '৪,২০০' },
+  { class: 'Pre-Nursery', age: '3-4 বছর', admission: '500', monthly: '200', annual: '2,500' },
+  { class: 'Nursery', age: '4-5 বছর', admission: '500', monthly: '250', annual: '3,000' },
+  { class: 'Class 1', age: '5-6 বছর', admission: '600', monthly: '300', annual: '3,600' },
+  { class: 'Class 2', age: '6-7 বছর', admission: '600', monthly: '300', annual: '3,600' },
+  { class: 'Class 3', age: '7-8 বছর', admission: '700', monthly: '350', annual: '4,200' },
+  { class: 'Class 4', age: '8-9 বছর', admission: '700', monthly: '350', annual: '4,200' },
 ];
 
 // Demo teachers
 export const TEACHERS_DATA = [
   { id: 1, name: 'প্রধান শিক্ষক', designation: 'প্রধান শিক্ষক', subject: 'সকল বিষয়', emoji: '👨‍🏫' },
-  { id: 2, name: 'শিক্ষক ২', designation: 'সহকারী শিক্ষক', subject: 'বাংলা', emoji: '👩‍🏫' },
-  { id: 3, name: 'শিক্ষক ৩', designation: 'সহকারী শিক্ষক', subject: 'গণিত', emoji: '👨‍🏫' },
-  { id: 4, name: 'শিক্ষক ৪', designation: 'সহকারী শিক্ষক', subject: 'ইংরেজি', emoji: '👩‍🏫' },
-  { id: 5, name: 'শিক্ষক ৫', designation: 'সহকারী শিক্ষক', subject: 'পরিবেশ বিদ্যা', emoji: '👨‍🏫' },
-  { id: 6, name: 'শিক্ষক ৬', designation: 'সহকারী শিক্ষক', subject: 'অঙ্কন', emoji: '👩‍🏫' },
-  { id: 7, name: 'শিক্ষক ৭', designation: 'সহকারী শিক্ষক', subject: 'শারীরশিক্ষা', emoji: '👨‍🏫' },
+  { id: 2, name: 'শিক্ষক 2', designation: 'সহকারী শিক্ষক', subject: 'বাংলা', emoji: '👩‍🏫' },
+  { id: 3, name: 'শিক্ষক 3', designation: 'সহকারী শিক্ষক', subject: 'গণিত', emoji: '👨‍🏫' },
+  { id: 4, name: 'শিক্ষক 4', designation: 'সহকারী শিক্ষক', subject: 'ইংরেজি', emoji: '👩‍🏫' },
+  { id: 5, name: 'শিক্ষক 5', designation: 'সহকারী শিক্ষক', subject: 'পরিবেশ বিদ্যা', emoji: '👨‍🏫' },
+  { id: 6, name: 'শিক্ষক 6', designation: 'সহকারী শিক্ষক', subject: 'অঙ্কন', emoji: '👩‍🏫' },
+  { id: 7, name: 'শিক্ষক 7', designation: 'সহকারী শিক্ষক', subject: 'শারীরশিক্ষা', emoji: '👨‍🏫' },
 ];
 
 // Demo notices
 export const NOTICES_DATA = [
-  { id: 1, text: 'আগামী ১৫ তারিখ থেকে বার্ষিক পরীক্ষা শুরু হবে।' },
+  { id: 1, text: 'আগামী 15 তারিখ থেকে বার্ষিক পরীক্ষা শুরু হবে।' },
   { id: 2, text: 'নতুন শিক্ষাবর্ষের ভর্তি চলছে — যোগাযোগ করুন।' },
   { id: 3, text: 'আগামীকাল বিদ্যালয় বন্ধ থাকবে।' },
 ];
@@ -88,7 +88,7 @@ export const GALLERY_DATA = [
 
 // Demo alumni
 export const ALUMNI_DATA = [
-  { id: 1, name: 'ছাত্র ১', achievement: 'মাধ্যমিকে জেলায় প্রথম', year: '২০২০', emoji: '🎓' },
-  { id: 2, name: 'ছাত্রী ২', achievement: 'জাতীয় বৃত্তি প্রাপ্ত', year: '২০২১', emoji: '🏆' },
-  { id: 3, name: 'ছাত্র ৩', achievement: 'বিজ্ঞান অলিম্পিয়াড পদক', year: '২০২২', emoji: '🥇' },
+  { id: 1, name: 'ছাত্র 1', achievement: 'মাধ্যমিকে জেলায় প্রথম', year: '2020', emoji: '🎓' },
+  { id: 2, name: 'ছাত্রী 2', achievement: 'জাতীয় বৃত্তি প্রাপ্ত', year: '2021', emoji: '🏆' },
+  { id: 3, name: 'ছাত্র 3', achievement: 'বিজ্ঞান অলিম্পিয়াড পদক', year: '2022', emoji: '🥇' },
 ];

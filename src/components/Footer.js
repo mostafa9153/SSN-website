@@ -9,7 +9,7 @@ export default function Footer() {
             <h4>🏫 {SCHOOL.name}</h4>
             <p style={{ fontSize: '0.9rem', lineHeight: 1.7 }}>
               {SCHOOL.addressBn}<br />
-              প্রতিষ্ঠাকাল: ২০১১<br />
+              Founded: 2011<br />
               UDISE: {SCHOOL.udise}
             </p>
           </div>
