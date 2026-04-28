@@ -725,11 +725,16 @@ p { font-size: 1rem; }
 .fees-table tr:nth-child(even) { background: rgba(86, 171, 47, 0.03); }
 .fees-table tr:hover { background: rgba(86, 171, 47, 0.07); }
 
-.admission-steps {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.25rem;
-  margin-top: 2rem;
+.admission-stack {
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.step-card-wrapper {
+  position: sticky;
+  margin-bottom: 2rem;
+  z-index: var(--z);
 }
 
 .step-card {

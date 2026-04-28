@@ -40,17 +40,27 @@ export default function AdmissionSection({ feesData }) {
         <h3 style={{ textAlign: 'center', marginBottom: '1.5rem', color: 'var(--primary-dark)' }}>
           ভর্তির প্রক্রিয়া
         </h3>
-        <div className="admission-steps">
+        <div className="admission-stack">
           {[
             { step: 1, title: 'যোগাযোগ করুন', desc: 'ফোন বা WhatsApp এ আমাদের সাথে কথা বলুন' },
             { step: 2, title: 'ফর্ম সংগ্রহ', desc: 'বিদ্যালয় থেকে ভর্তি ফর্ম নিন' },
             { step: 3, title: 'ডকুমেন্ট জমা', desc: 'জন্ম সনদ ও ছবি জমা দিন' },
             { step: 4, title: 'ভর্তি সম্পন্ন', desc: 'ফি জমা দিয়ে ভর্তি নিশ্চিত করুন' },
-          ].map(s => (
-            <div className="glass-card step-card" key={s.step}>
-              <div className="step-number">{s.step}</div>
-              <h3 style={{ fontSize: '1rem', marginBottom: '0.5rem' }}>{s.title}</h3>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-light)' }}>{s.desc}</p>
+          ].map((s, index) => (
+            <div 
+              className="step-card-wrapper" 
+              key={s.step}
+              style={{
+                '--z': index + 1,
+                top: `calc(var(--nav-height) + ${20 + index * 15}px)`,
+                zIndex: index + 1,
+              }}
+            >
+              <div className="glass-card step-card">
+                <div className="step-number">{s.step}</div>
+                <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>{s.title}</h3>
+                <p style={{ fontSize: '1rem', color: 'var(--text-light)' }}>{s.desc}</p>
+              </div>
             </div>
           ))}
         </div>
