@@ -17,9 +17,28 @@ export default function NoticeBanner({ notices }) {
           </div>
           <div className="notice-list">
             {displayNotices.map(notice => (
-              <div className="notice-item" key={notice.id}>
+              <div className="notice-item" key={notice.id} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
                 <span className="notice-pin">📌</span>
-                <span>{notice.text || notice.title}</span>
+                <span style={{ flex: 1 }}>{notice.text || notice.title}</span>
+                {notice.file_url && (
+                  <a 
+                    href={notice.file_url} 
+                    target="_blank" 
+                    rel="noreferrer"
+                    style={{ 
+                      fontSize: '0.8rem', 
+                      background: 'rgba(86, 171, 47, 0.1)', 
+                      color: '#2b8a3e', 
+                      padding: '4px 10px', 
+                      borderRadius: '4px', 
+                      textDecoration: 'none',
+                      fontWeight: 'bold',
+                      whiteSpace: 'nowrap'
+                    }}
+                  >
+                    ফাইল দেখুন
+                  </a>
+                )}
               </div>
             ))}
           </div>
