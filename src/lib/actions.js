@@ -225,3 +225,14 @@ export async function deleteFee(id) {
   revalidatePath('/');
   revalidatePath('/admin/fees');
 }
+
+export async function updateFee(id, feeData) {
+  await checkAuth();
+  const { error } = await supabaseAdmin
+    .from('fees')
+    .update(feeData)
+    .eq('id', id);
+  if (error) throw error;
+  revalidatePath('/');
+  revalidatePath('/admin/fees');
+}
