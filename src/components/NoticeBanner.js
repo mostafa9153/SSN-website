@@ -1,3 +1,4 @@
+'use client';
 import { NOTICES_DATA } from '@/lib/constants';
 
 export default function NoticeBanner({ notices }) {
