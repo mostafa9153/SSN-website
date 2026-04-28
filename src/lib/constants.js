@@ -10,7 +10,7 @@ export const SCHOOL = {
   founded: 2011,
   medium: 'বাংলা মাধ্যম',
   classes: 'Pre-Nursery থেকে Class 4',
-  mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3660!2d87.85!3d23.25!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDE1JzAwLjAiTiA4N8KwNTEnMDAuMCJF!5e0!3m2!1sbn!2sin!4v1700000000000!5m2!1sbn!2sin',
+  mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3686.0!2d87.3926016!3d22.7388466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f7fb00751facab%3A0x97547b26a438c847!2sSirajiya%20Sishu%20Niketan!5e0!3m2!1sen!2sin!4v1714316000000!5m2!1sen!2sin',
 };
 
 export const STATS = {
